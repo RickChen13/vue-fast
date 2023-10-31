@@ -90,7 +90,7 @@ abstract class BaseController {
             };
         }
         if (config.timeout == undefined) {
-            config.timeout = 5000;
+            config.timeout = 0;
         }
         return config;
     }
