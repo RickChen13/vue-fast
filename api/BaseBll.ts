@@ -24,7 +24,6 @@ abstract class BaseBll {
     reqSetData(data: any) {
         return data;
     }
-
 }
 
 export default BaseBll;
