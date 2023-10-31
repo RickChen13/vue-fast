@@ -1,4 +1,3 @@
-import Token from "@/app/common/Token";
 import config from "@/config/config";
 
 abstract class BaseBll {
@@ -26,12 +25,6 @@ abstract class BaseBll {
         return data;
     }
 
-    loginHeaders() {
-        return {
-            'Content-Type': 'application/x-www-form-urlencoded charset=UTF-8',
-            'Authorization': Token.get(),
-        }
-    }
 }
 
 export default BaseBll;
