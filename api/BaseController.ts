@@ -1,7 +1,6 @@
 import to from 'await-to-js';
 import { type requestConfig, type requestError } from './BaseControllerInterface';
 import axios, { type AxiosRequestConfig, type AxiosStatic } from 'axios';
-import qs from 'qs';
 
 abstract class BaseController {
     /**
@@ -16,10 +15,11 @@ abstract class BaseController {
         if (config.method == 'post') {
             axiosRequestConfig = {
                 url: config.url,
-                data: qs.stringify(config.data),
+                data: config.data,
                 method: config.method,
                 timeout: config.timeout,
-                headers: config.headers
+                headers: config.headers,
+                signal: config.signal,
             };
         } else {
             axiosRequestConfig = {
@@ -27,7 +27,8 @@ abstract class BaseController {
                 params: config.data,
                 method: config.method,
                 timeout: config.timeout,
-                headers: config.headers
+                headers: config.headers,
+                signal: config.signal,
             };
         }
         const [err, res] = await to(axios(axiosRequestConfig));
@@ -57,11 +58,23 @@ abstract class BaseController {
      * @param error
      */
     protected error(error: Error): requestError {
-        return {
-            result: false,
-            msg: '请求失败，请稍后再试',
-            dev: error.message
-        };
+        let result: requestError;
+        if (axios.isCancel(error)) {
+            result = {
+                result: false,
+                code: -3,
+                msg: '请求中断',
+                dev: error.message
+            };
+        } else {
+            // 处理错误
+            result = {
+                result: false,
+                msg: '请求失败，请稍后再试',
+                dev: error.message
+            };
+        }
+        return result;
     }
 
     /**
