@@ -12,7 +12,12 @@ abstract class BaseBll {
      * @param url
      */
     reqUrl(url: string) {
-        const requestUrl = `${config.hostUrl}${url}`;
+        let requestUrl;
+        if (process.env.NODE_ENV === "development") {
+            requestUrl = `${config.devHostUrl}${url}`;
+        } else {
+            requestUrl = `${config.hostUrl}${url}`;
+        }
         return requestUrl;
     }
 
