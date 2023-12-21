@@ -1,10 +1,13 @@
 import config from "@/config/config";
+import BaseController from "./BaseController";
 
-abstract class BaseBll {
+abstract class BaseBll extends BaseController {
     /**
      * 构造函数
      */
-    constructor() { }
+    constructor() {
+        super();
+    }
 
     /**
      * url处理
