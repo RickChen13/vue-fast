@@ -64,14 +64,14 @@ abstract class BaseController {
                 result: false,
                 code: -3,
                 msg: '请求中断',
-                dev: error.message
+                dev: error
             };
         } else {
             // 处理错误
             result = {
                 result: false,
                 msg: '请求失败，请稍后再试',
-                dev: error.message
+                dev: error
             };
         }
         return result;
