@@ -1,12 +1,11 @@
 import config from "@/config/config";
-import BaseController from "./BaseController";
+import Request from "./Request";
 
-abstract class BaseBll extends BaseController {
-    /**
-     * 构造函数
-     */
+abstract class BaseBll {
+    request: Request;
+
     constructor() {
-        super();
+        this.request = new Request();
     }
 
     /**
@@ -15,13 +14,7 @@ abstract class BaseBll extends BaseController {
      * @param url
      */
     reqUrl(url: string) {
-        let requestUrl;
-        if (process.env.NODE_ENV === "development") {
-            requestUrl = `${config.devHostUrl}${url}`;
-        } else {
-            requestUrl = `${config.hostUrl}${url}`;
-        }
-        return requestUrl;
+        return `${config.hostUrl}${url}`;
     }
 
     /**

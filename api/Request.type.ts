@@ -1,4 +1,4 @@
-export interface requestConfig {
+export interface RequestConfig {
     url: string;
     data: any;
     headers?: any;
@@ -7,7 +7,7 @@ export interface requestConfig {
     signal?: AbortSignal;//中断信号
 }
 
-export interface requestError {
+export interface ResultError {
     result: false;
     msg: string;
     code?: number;
