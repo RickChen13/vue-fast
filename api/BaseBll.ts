@@ -1,10 +1,12 @@
 import config from "@/config/config";
+import Request from "./Request";
 
 abstract class BaseBll {
-    /**
-     * 构造函数
-     */
-    constructor() { }
+    request: Request;
+
+    constructor() {
+        this.request = new Request();
+    }
 
     /**
      * url处理
@@ -12,13 +14,7 @@ abstract class BaseBll {
      * @param url
      */
     reqUrl(url: string) {
-        let requestUrl;
-        if (process.env.NODE_ENV === "development") {
-            requestUrl = `${config.devHostUrl}${url}`;
-        } else {
-            requestUrl = `${config.hostUrl}${url}`;
-        }
-        return requestUrl;
+        return `${config.hostUrl}${url}`;
     }
 
     /**
