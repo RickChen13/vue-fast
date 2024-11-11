@@ -83,7 +83,7 @@ class Request {
      * @param config
      * @returns
      */
-    private axiosCheckConfig(config: RequestConfig) {
+    protected axiosCheckConfig(config: RequestConfig) {
         if (config.headers == undefined) {
             config.headers = {
                 'Content-Type': 'application/x-www-form-urlencoded charset=UTF-8'
