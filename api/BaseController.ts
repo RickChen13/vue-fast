@@ -1,6 +1,7 @@
 import to from 'await-to-js';
 import { type requestConfig, type requestError } from './BaseControllerInterface';
 import axios, { type AxiosRequestConfig, type AxiosStatic } from 'axios';
+import qs from 'qs';
 
 abstract class BaseController {
     /**
@@ -83,7 +84,7 @@ abstract class BaseController {
      * @param config
      * @returns
      */
-    private axiosCheckConfig(config: requestConfig) {
+    protected axiosCheckConfig(config: requestConfig) {
         if (config.headers == undefined) {
             config.headers = {
                 'Content-Type': 'application/x-www-form-urlencoded charset=UTF-8'
