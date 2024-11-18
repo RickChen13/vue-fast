@@ -1,4 +1,4 @@
-import Request from "./Request";
+import Request from "./request";
 abstract class BaseController extends Request { }
 
 export default BaseController;

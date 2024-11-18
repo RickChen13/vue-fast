@@ -1,5 +1,5 @@
 import config from "@/config/config";
-import Request from "./Request";
+import Request from "./request";
 
 abstract class BaseBll {
     request: Request;

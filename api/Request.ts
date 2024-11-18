@@ -1,5 +1,5 @@
 import to from 'await-to-js';
-import { type RequestConfig, type ResultError } from './Request.type';
+import { type RequestConfig, type ResultError } from './request.type';
 import axios, { type AxiosRequestConfig, type AxiosStatic } from 'axios';
 
 class Request {

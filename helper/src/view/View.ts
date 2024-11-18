@@ -106,10 +106,10 @@ export default components.vue();
         append = Write.formatFrist(append);
         append = Write.formatLast(append);
         let dir = BASE_APP_PATH + APP_PATH + `${typeName}${append}`;
-        let content = `import BaseViews from "@/fast/base/BaseView";
+        let content = `import BaseView from "@/fast/base/base.view";
 import { defineComponent } from "vue";
 
-class Component extends BaseViews {
+class Component extends BaseView {
     constructor() {
         super();
     }
