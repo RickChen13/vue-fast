@@ -93,7 +93,7 @@ var import_path3 = __toESM(require("path"));
 // src/common/Write.ts
 var import_fs = __toESM(require("fs"));
 var import_path2 = __toESM(require("path"));
-var isAbsolute = function (filePath) {
+var isAbsolute = function(filePath) {
   filePath = import_path2.default.normalize(filePath);
   if (filePath.substring(0, 1) == "/")
     return true;
@@ -101,7 +101,7 @@ var isAbsolute = function (filePath) {
     return true;
   return false;
 };
-var mkdirSync = function (dirPath) {
+var mkdirSync = function(dirPath) {
   if (dirPath == null || dirPath == "")
     return;
   dirPath = isAbsolute(dirPath) ? import_path2.default.normalize(dirPath) : import_path2.default.join(process.cwd(), dirPath);
@@ -232,13 +232,13 @@ var View = class {
 </template>
 
 <script lang="ts">
-import Component from "@/app${typeName}${append}${name}"
+import Component from "./${name}"
 const components = new Component();
 export default components.vue();
 </script>
 
 <style lang="scss" scoped>
-@import "@/app${typeName}${append}${name}.scss";
+@use "./${name}.scss";
 </style>
 `;
     Write.put(dir, Fullmc, content);

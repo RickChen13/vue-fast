@@ -57,13 +57,13 @@ class View {
 </template>
 
 <script lang="ts">
-import Component from "@/app${typeName}${append}${name}"
+import Component from "./${name}"
 const components = new Component();
 export default components.vue();
 </script>
 
 <style lang="scss" scoped>
-@import "@/app${typeName}${append}${name}.scss";
+@use "./${name}.scss";
 </style>
 `;
 
@@ -107,23 +107,23 @@ export default components.vue();
         append = Write.formatLast(append);
         let dir = BASE_APP_PATH + APP_PATH + `${typeName}${append}`;
         let content = `import BaseViews from "@/fast/base/BaseView";
-import { defineComponent, getCurrentInstance } from "vue";
+import { defineComponent } from "vue";
 
 class Component extends BaseViews {
     constructor() {
-    super();
+        super();
     }
 
     public vue() {
-    const vue = defineComponent({
-        setup() {
-        return {};
-        },
-        created() {},
-        methods: {},
-        components: {},
-    });
-    return vue;
+        const vue = defineComponent({
+            setup() {
+                return {};
+            },
+            created() { },
+            methods: {},
+            components: {},
+        });
+        return vue;
     }
 }
 
